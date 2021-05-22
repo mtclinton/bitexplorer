@@ -5,7 +5,7 @@ import {API_URL} from '../constants'
 function Home() {
 
     const [data, setData] = useState([])
-    const [block, setBlock] = useState([])
+    const [blocks, setBlocks] = useState([])
 
 
     // ***** fetch data *****
@@ -26,8 +26,21 @@ function Home() {
                 let btc_data = data.data;
                 setData(btc_data)
 
-                // Fetch another API
-                return fetch(`${API_URL}get_blockhash/BTC/${btc_data.blocks}`);
+                let blocks_data = []
+
+                for(let i=0; i < 10; i++){
+                    const b_num = btc_data.blocks - i;
+                    const b = fetch(`${API_URL}get_block/BTC/${b_num}`);
+                    blocks_data.push(b)
+                }
+
+                Promise.all(blocks_data)
+                    .then(responses => Promise.all(responses.map(value => value.json())))
+                    .then(dataList => {
+                        const blcks = dataList.map(v => v.data);
+
+                        setBlocks(blcks);
+                    });
 
             }).then(function (response) {
                 if (response.ok) {
@@ -35,8 +48,8 @@ function Home() {
                 } else {
                     return Promise.reject(response);
                 }
-            }).then(function (block_data) {
-                setBlock(block_data.data)
+            // }).then(function (block_data) {
+            //     setBlock(block_data.data)
 
             }).catch(function (error) {
                 console.warn(error);
@@ -65,10 +78,13 @@ function Home() {
           <br />
           <div>
               <h1>Block: {data.blocks}</h1>
-              {Object.keys(block).map((keyName, i) => (
-                  <div className="crypto-item-container" key={i}>
-                      <span className="crypto-item">{keyName} : {block[keyName]}</span>
-                  </div>
+              {Object.keys(blocks).map((block, i) => (
+                  Object.keys(blocks[block]).map((keyName, i) => (
+                      <div className="crypto-item-container" key={i}>
+                          <span className="crypto-item">{keyName} : {blocks[block][keyName]}</span>
+                      </div>
+
+                  ))
 
               ))}
           </div>
