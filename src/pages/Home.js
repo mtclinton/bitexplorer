@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 import {API_URL} from '../constants'
+import Header from "../components/nav/Header";
+import Footer from "../components/nav/Footer";
+import Container from "../components/Container"
 
 function Home() {
 
@@ -67,28 +70,33 @@ function Home() {
     }, [])
 
     return (
-      <div>
-          Home
-          {Object.keys(data).map((keyName, i) => (
-              <div className="crypto-item-container" key={i}>
-                  <span className="crypto-item">{keyName} : {data[keyName]}</span>
-              </div>
-
-          ))}
-          <br />
-          <div>
-              <h1>Block: {data.blocks}</h1>
-              {Object.keys(blocks).map((block, i) => (
-                  Object.keys(blocks[block]).map((keyName, i) => (
-                      <div className="crypto-item-container" key={i}>
-                          <span className="crypto-item">{keyName} : {blocks[block][keyName]}</span>
-                      </div>
-
-                  ))
-
-              ))}
-          </div>
-      </div>
+      // <div>
+      //     Home
+      //     {Object.keys(data).map((keyName, i) => (
+      //         <div className="crypto-item-container" key={i}>
+      //             <span className="crypto-item">{keyName} : {data[keyName]}</span>
+      //         </div>
+      //
+      //     ))}
+      //     <br />
+      //     <div>
+      //         <h1>Block: {data.blocks}</h1>
+      //         {Object.keys(blocks).map((block, i) => (
+      //             Object.keys(blocks[block]).map((keyName, i) => (
+      //                 <div className="crypto-item-container" key={i}>
+      //                     <span className="crypto-item">{keyName} : {blocks[block][keyName]}</span>
+      //                 </div>
+      //
+      //             ))
+      //
+      //         ))}
+      //     </div>
+      // </div>
+        <>
+            <Header />
+            <Container />
+            <Footer />
+        </>
     );
 }
 
