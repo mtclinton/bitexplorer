@@ -31,7 +31,7 @@ function Home() {
 
                 let blocks_data = []
 
-                for(let i=0; i < 10; i++){
+                for(let i=0; i < 7; i++){
                     const b_num = btc_data.blocks - i;
                     const b = fetch(`${API_URL}get_block/BTC/${b_num}`);
                     blocks_data.push(b)
@@ -81,12 +81,14 @@ function Home() {
       //     <br />
       //     <div>
       //         <h1>Block: {data.blocks}</h1>
+      //         <br />
       //         {Object.keys(blocks).map((block, i) => (
       //             Object.keys(blocks[block]).map((keyName, i) => (
       //                 <div className="crypto-item-container" key={i}>
       //                     <span className="crypto-item">{keyName} : {blocks[block][keyName]}</span>
-      //                 </div>
+      //                     <br />
       //
+      //                 </div>
       //             ))
       //
       //         ))}
@@ -94,7 +96,7 @@ function Home() {
       // </div>
         <>
             <Header />
-            <Container />
+            <Container data={data} blocks={blocks} />
             <Footer />
         </>
     );

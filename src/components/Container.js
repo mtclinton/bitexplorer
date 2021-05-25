@@ -1,6 +1,38 @@
 import React from 'react';
+import Blocklist from "./Blocklist";
 
-function Container() {
+function timeSince(date) {
+
+    var seconds = Math.floor((new Date() - new Date(date * 1000)) / 1000);
+
+    var interval = seconds / 31536000;
+
+    if (interval > 1) {
+        return Math.floor(interval) + " years";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+        return Math.floor(interval) + " months";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+        return Math.floor(interval) + " days";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+        return Math.floor(interval) + " hours";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+}
+
+function Container(props) {
+
+    const {data, blocks} = props;
+
     return (
         <>
             <section className="hero is-medium">
@@ -23,7 +55,7 @@ function Container() {
                     <div className="level">
                         <div className="level-left">
                             <div className="level-item">
-                                <h2 className="subtitle">Featured Articles</h2>
+                                <h2 className="subtitle">Supported Currencies</h2>
                             </div>
                         </div>
                         <div className="level-right">
@@ -47,37 +79,37 @@ function Container() {
                         <div className="column is-3">
                             <article>
                                 <figure className="image is-5by3">
-                                    <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png"/>
+                                    <img src="/css/bitcoin_card.svg"/>
                                 </figure>
-                                <h2 className="subtitle">Creating a Group</h2>
-                                <span className="tag is-rounded">Users & Groups</span>
+                                {/*<h2 className="subtitle">Creating a Group</h2>*/}
+                                {/*<span className="tag is-rounded">Users & Groups</span>*/}
                             </article>
                         </div>
                         <div className="column is-3">
                             <article>
                                 <figure className="image is-5by3">
-                                    <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png"/>
+                                    <img src="/css/litecoin_card.svg"/>
                                 </figure>
-                                <h2 className="subtitle">Downloading/Printing Your Invoices</h2>
-                                <span className="tag is-rounded">Billing & Accounts</span>
+                                {/*<h2 className="subtitle">Downloading/Printing Your Invoices</h2>*/}
+                                {/*<span className="tag is-rounded">Billing & Accounts</span>*/}
                             </article>
                         </div>
                         <div className="column is-3">
                             <article>
                                 <figure className="image is-5by3">
-                                    <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png"/>
+                                    <img src="/css/bitcoincash_card.svg"/>
                                 </figure>
-                                <h2 className="subtitle">Changing the Account Owner</h2>
-                                <span className="tag is-rounded">Billing & Accounts</span>
+                                {/*<h2 className="subtitle">Changing the Account Owner</h2>*/}
+                                {/*<span className="tag is-rounded">Billing & Accounts</span>*/}
                             </article>
                         </div>
                         <div className="column is-3">
                             <article>
                                 <figure className="image is-5by3">
-                                    <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png"/>
+                                    <img src="/css/doge_card.svg"/>
                                 </figure>
-                                <h2 className="subtitle">Adding Internal Notes</h2>
-                                <span className="tag is-rounded">Billing & Accounts</span>
+                                {/*<h2 className="subtitle">Adding Internal Notes</h2>*/}
+                                {/*<span className="tag is-rounded">Billing & Accounts</span>*/}
                             </article>
                         </div>
                     </div>
@@ -87,31 +119,10 @@ function Container() {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    Billing & Accounts <span>5 articles</span>
+                                    <img src="/css/bitcoin_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Blocks <span>5 minutes ago</span>
                                 </h1>
                                 <hr/>
-                                <ul>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        General Billing Overview
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Changing the Account Owner
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Downloading/Printing Your Invoices
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Downloading/Printing Your Invoices
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        What to Do When Your Card is Declined
-                                    </li>
-                                </ul>
+                                <Blocklist data={data} blocks={blocks} />
                                 <h3 className="category-more">View All <i
                                     className="far fa-arrow-right icon-padding-left" /></h3>
                             </div>
@@ -119,31 +130,11 @@ function Container() {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    FAQs <span>7 articles</span>
+                                    <img src="/css/litecoin_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Blocks <span>5 minutes ago</span>
                                 </h1>
                                 <hr/>
-                                <ul>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Why Isn't My Custom Profile Data Showing on My Tickets?
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Why Won't My Gmail SMTP Settings Work?
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Is There a Customer Portal My Users Can Log in To?
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        How Do I Export My Contacts, Tickets, Reports?
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        How Do I Search for a Number?
-                                    </li>
-                                </ul>
+                                <Blocklist data={data} blocks={blocks} />
+
                                 <h3 className="category-more">View All <i
                                     className="far fa-arrow-right icon-padding-left" /></h3>
                             </div>
@@ -151,31 +142,11 @@ function Container() {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    Getting Started <span>6 articles</span>
+                                    <img src="/css/bitcoincash_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Blocks <span>5 minutes ago</span>
                                 </h1>
                                 <hr/>
-                                <ul>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Creating a New Conversation
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Assigning Conversations and Changing Status
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Adding Internal Notes
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Configuring Your Inbox View
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Snoozing a Conversation
-                                    </li>
-                                </ul>
+                                <Blocklist data={data} blocks={blocks} />
+
                                 <h3 className="category-more">View All <i
                                     className="far fa-arrow-right icon-padding-left" /></h3>
                             </div>
@@ -183,23 +154,11 @@ function Container() {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    Users & Groups <span>3 articles</span>
+                                    <img src="/css/doge_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Blocks <span>5 minutes ago</span>
                                 </h1>
                                 <hr/>
-                                <ul>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Understanding User Roles
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Creating a Group
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-caret-right fa-xs icon-padding-right"/>
-                                        Editing the Role of a User
-                                    </li>
-                                </ul>
+                                <Blocklist data={data} blocks={blocks} />
+
                                 <h3 className="category-more">View All <i
                                     className="far fa-arrow-right icon-padding-left" /></h3>
                             </div>
