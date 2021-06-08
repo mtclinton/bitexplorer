@@ -23,6 +23,16 @@ hr {
     background: hsl(247, 84%, 63%);
 }
 
+/* supported currencies */
+.image {
+    transition: all .2s ease-in-out;
+
+}
+
+.image :hover {
+    transform: scale(1.1);
+}
+
 /* blocklist */
 
 .blocklist-container {

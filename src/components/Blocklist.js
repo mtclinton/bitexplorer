@@ -4,6 +4,7 @@ import {API_URL} from '../constants'
 import Header from "../components/nav/Header";
 import Footer from "../components/nav/Footer";
 import Container from "../components/Container"
+import Chart from './Pricegraph'
 
 function timeSince(date) {
 
@@ -47,33 +48,37 @@ function Blocklist(props) {
             <div className="blocklist-wrapper">
 
                     {Object.keys(blocks).map((block, i) => (
-                        <div className="blocklist-data-container">
-                            <div className="blocklist-height">
-                                <div className="blocklist-item"><a
-                                    href={`https://www.blockchain.com/btc/block/${blocks[block].blockhash}`}
-                                    className="block-data">{blocks[block].block_no}</a>
+                        <>
+                            <div className="blocklist-data-container">
+                                <div className="blocklist-height">
+                                    <div className="blocklist-item"><a
+                                        href={`https://www.blockchain.com/btc/block/${blocks[block].blockhash}`}
+                                        className="block-data">{blocks[block].block_no}</a>
+                                    </div>
+                                </div>
+                                <div className="blocklist-mined-trans">
+                                    <div  className="blocklist-item"><span
+                                        className="block-data">{timeSince(blocks[block].time)}</span></div>
+                                </div>
+                                <div className="blocklist-mined-trans">
+                                    <div className="blocklist-item2"><a
+                                        href={`https://www.blockchain.com/btc/block/${blocks[block].blockhash}`}
+                                        className="block-data">{blocks[block].txs.length} txs</a>
+                                    </div>
+                                </div>
+                                <div className="blocklist-size">
+                                    <div className="blocklist-item"><span
+                                        className="block-data">{numberWithCommas(blocks[block].size)} bytes</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="blocklist-mined-trans">
-                                <div  className="blocklist-item"><span
-                                    className="block-data">{timeSince(blocks[block].time)}</span></div>
-                            </div>
-                            <div className="blocklist-mined-trans">
-                                <div className="blocklist-item2"><a
-                                    href={`https://www.blockchain.com/btc/block/${blocks[block].blockhash}`}
-                                    className="block-data">{blocks[block].txs.length} txs</a>
-                                </div>
-                            </div>
-                            <div className="blocklist-size">
-                                <div className="blocklist-item"><span
-                                    className="block-data">{numberWithCommas(blocks[block].size)} bytes</span>
-                                </div>
-                            </div>
-                        </div>
 
+                        </>
                     ))}
 
             </div>
+            <Chart />
+
         </div>
 
 
