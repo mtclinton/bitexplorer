@@ -201,3 +201,8 @@ hr {
 .footer .links a {
     margin: 0 1rem;
 }
+
+.chartdiv {
+    width: 100%;
+    height: 300px;
+}

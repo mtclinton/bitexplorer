@@ -1,5 +1,6 @@
 import React from 'react';
 import Blocklist from "./Blocklist";
+import Chart from './Pricegraph';
 
 function timeSince(date) {
 
@@ -130,11 +131,33 @@ function Container(props) {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
+                                    | Latest Prices
+                                </h1>
+                                <hr/>
+                                <Chart chart_id={1}/>
+                                <h3 className="category-more">View All <i
+                                    className="far fa-arrow-right icon-padding-left" /></h3>
+                            </div>
+                        </div>
+                        <div className="column is-6">
+                            <div className="category">
+                                <h1 className="title is-5">
                                     <img src="/css/litecoin_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Blocks <span>5 minutes ago</span>
                                 </h1>
                                 <hr/>
                                 <Blocklist data={data} blocks={blocks} />
 
+                                <h3 className="category-more">View All <i
+                                    className="far fa-arrow-right icon-padding-left" /></h3>
+                            </div>
+                        </div>
+                        <div className="column is-6">
+                            <div className="category">
+                                <h1 className="title is-5">
+                                    | Latest Prices
+                                </h1>
+                                <hr/>
+                                <Chart chart_id={2}/>
                                 <h3 className="category-more">View All <i
                                     className="far fa-arrow-right icon-padding-left" /></h3>
                             </div>
@@ -154,11 +177,33 @@ function Container(props) {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
+                                    | Latest Prices
+                                </h1>
+                                <hr/>
+                                <Chart chart_id={3}/>
+                                <h3 className="category-more">View All <i
+                                    className="far fa-arrow-right icon-padding-left" /></h3>
+                            </div>
+                        </div>
+                        <div className="column is-6">
+                            <div className="category">
+                                <h1 className="title is-5">
                                     <img src="/css/doge_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Blocks <span>5 minutes ago</span>
                                 </h1>
                                 <hr/>
                                 <Blocklist data={data} blocks={blocks} />
 
+                                <h3 className="category-more">View All <i
+                                    className="far fa-arrow-right icon-padding-left" /></h3>
+                            </div>
+                        </div>
+                        <div className="column is-6">
+                            <div className="category">
+                                <h1 className="title is-5">
+                                    | Latest Prices
+                                </h1>
+                                <hr/>
+                                <Chart chart_id={4}/>
                                 <h3 className="category-more">View All <i
                                     className="far fa-arrow-right icon-padding-left" /></h3>
                             </div>

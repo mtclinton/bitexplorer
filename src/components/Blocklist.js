@@ -77,7 +77,6 @@ function Blocklist(props) {
                     ))}
 
             </div>
-            <Chart />
 
         </div>
 
