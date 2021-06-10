@@ -131,7 +131,7 @@ function Container(props) {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    | Latest Prices
+                                    <img src="/css/bitcoin_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Prices
                                 </h1>
                                 <hr/>
                                 <Chart chart_id={1}/>
@@ -154,7 +154,7 @@ function Container(props) {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    | Latest Prices
+                                    <img src="/css/litecoin_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Prices
                                 </h1>
                                 <hr/>
                                 <Chart chart_id={2}/>
@@ -177,7 +177,7 @@ function Container(props) {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    | Latest Prices
+                                    <img src="/css/bitcoincash_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Prices
                                 </h1>
                                 <hr/>
                                 <Chart chart_id={3}/>
@@ -200,7 +200,7 @@ function Container(props) {
                         <div className="column is-6">
                             <div className="category">
                                 <h1 className="title is-5">
-                                    | Latest Prices
+                                    <img src="/css/doge_card.svg"  style={{height:"44px", width: "44px", verticalAlign: "middle"}}/> | Latest Prices
                                 </h1>
                                 <hr/>
                                 <Chart chart_id={4}/>
