@@ -1,102 +1,36 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
-import {API_URL} from '../constants'
-import Header from "../components/nav/Header";
-import Footer from "../components/nav/Footer";
-import Container from "../components/Container"
+import BitcoinIcon from '../assets/bitcoin.svg';
+import LitecoinIcon from '../assets/litecoin.svg';
+import DashIcon from '../assets/dash.svg';
+import DogecoinIcon from '../assets/dogecoin.svg';
+
+import Header from '../components/nav/Header';
+import Footer from '../components/nav/Footer';
+import CurrencyList from '../components/CurrencyList';
+import Overview from '../components/coin/Overview';
 
 function Home() {
-
-    const [data, setData] = useState([])
-    const [blocks, setBlocks] = useState([])
-
-
-    // ***** fetch data *****
-    const fetchData = async url => {
-
-        try {
-
-            // Call the API
-            fetch(url).then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    return Promise.reject(response);
-                }
-            }).then(function (data) {
-
-                // Store the post data to a variable
-                let btc_data = data.data;
-                setData(btc_data)
-
-                let blocks_data = []
-
-                for(let i=0; i < 7; i++){
-                    const b_num = btc_data.blocks - i;
-                    const b = fetch(`${API_URL}get_block/BTC/${b_num}`);
-                    blocks_data.push(b)
-                }
-
-                Promise.all(blocks_data)
-                    .then(responses => Promise.all(responses.map(value => value.json())))
-                    .then(dataList => {
-                        const blcks = dataList.map(v => v.data);
-
-                        setBlocks(blcks);
-                    });
-
-            }).then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    return Promise.reject(response);
-                }
-            // }).then(function (block_data) {
-            //     setBlock(block_data.data)
-
-            }).catch(function (error) {
-                console.warn(error);
-            });
-
-        } catch (err) {
-            console.log("Error:", err)
-        }
-    }
-
-    useEffect(() => {
-        fetchData(  `${API_URL}get_info/BTC`)
-
-        fetchData()
-    }, [])
-
     return (
-      // <div>
-      //     Home
-      //     {Object.keys(data).map((keyName, i) => (
-      //         <div className="crypto-item-container" key={i}>
-      //             <span className="crypto-item">{keyName} : {data[keyName]}</span>
-      //         </div>
-      //
-      //     ))}
-      //     <br />
-      //     <div>
-      //         <h1>Block: {data.blocks}</h1>
-      //         <br />
-      //         {Object.keys(blocks).map((block, i) => (
-      //             Object.keys(blocks[block]).map((keyName, i) => (
-      //                 <div className="crypto-item-container" key={i}>
-      //                     <span className="crypto-item">{keyName} : {blocks[block][keyName]}</span>
-      //                     <br />
-      //
-      //                 </div>
-      //             ))
-      //
-      //         ))}
-      //     </div>
-      // </div>
         <>
             <Header />
-            <Container data={data} blocks={blocks} />
+            <div className="container is-max-desktop">
+                <section className="mt-5">
+                    <CurrencyList />
+                </section>
+                <section className="mt-5">
+                    <Overview currency="Bitcoin" Icon={BitcoinIcon} code="btc" />
+                </section>
+                <section className="mt-5">
+                    <Overview currency="Litecoin" Icon={LitecoinIcon} code="ltc" />
+                </section>
+                <section className="mt-5">
+                    <Overview currency="Dash" Icon={DashIcon} code="dash" />
+                </section>
+                <section className="mt-5">
+                    <Overview currency="Dogecoin" Icon={DogecoinIcon} code="doge" />
+                </section>
+            </div>
             <Footer />
         </>
     );
