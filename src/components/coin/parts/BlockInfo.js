@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
-import { API_URL } from '../../../constants';
+import numberWithCommas from '../../../utils/commas';
 
 function BlockInfo(props) {
-    const { code } = props;
 
-    const [info, setInfo] = useState(null);
-
-    useEffect(() => {
-        axios.get(`${API_URL}get_info/${code}`)
-            .then((res) => {
-                setInfo(res.data.data);
-            });
-    }, []);
+    const { info, blocks } = props;
 
     return (
         <section>
@@ -23,16 +14,33 @@ function BlockInfo(props) {
                     <div className="mt-2">
                         <p>
                             Mining Difficulty:&nbsp;
-                            {info.mining_difficulty}
+                            {numberWithCommas(info.mining_difficulty)}
                         </p>
                         <p>
                             Unconfirmed Transactions:&nbsp;
-                            {info.unconfirmed_txs}
+                            {numberWithCommas(info.unconfirmed_txs)}
                         </p>
                         <p>
                             Total Blocks:&nbsp;
-                            {info.blocks}
+                            {numberWithCommas(info.blocks)}
                         </p>
+                        <hr className="my-3" />
+                        {!blocks.length && <p>Loading blocks...</p>}
+                        {
+                            blocks.map((block) => (
+                                <div className="is-flex" key={block.block_no}>
+                                    <p>
+                                        Block #
+                                        {numberWithCommas(block.block_no)}
+                                    </p>
+                                    <p className="ml-auto">
+                                        {numberWithCommas(block.txs.length)}
+                                        {' '}
+                                        Transactions
+                                    </p>
+                                </div>
+                            ))
+                        }
                     </div>
                 )
             }
@@ -41,7 +49,8 @@ function BlockInfo(props) {
 }
 
 BlockInfo.propTypes = {
-    code: PropTypes.string.isRequired,
+    info: PropTypes.object.isRequired,
+    blocks: PropTypes.array.isRequired,
 };
 
 export default BlockInfo;

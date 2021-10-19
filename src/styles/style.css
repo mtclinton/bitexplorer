@@ -13,160 +13,11 @@ hr {
 
 .navbar {
     min-height: 5rem;
-    background: cornflowerblue;
 }
 
-.button.is-primary {
-    background: var(--primary);
-}
-
-.button.is-primary:hover {
-    background: hsl(247, 84%, 63%);
-}
-
-/* supported currencies */
-.image {
-    transition: all .2s ease-in-out;
-}
-
-.image :hover {
-    transform: scale(1.1);
-}
-
-/* blocklist */
-
-.blocklist-container {
-    overflow-x: auto;
-    width: 100%;
-}
-
-.blocklist-wrapper {
-    min-width: 25rem;
-}
-
-
-.blocklist-height {
-    display: flex;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    padding: 0.5rem 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 18%;
-}
-
-.blocklist-mined-trans {
-    display: flex;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    padding: 0.5rem 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 25%;
-}
-
-.blocklist-size {
-    display: flex;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    padding: 0.5rem 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 32%;
-}
-
-.blocklist-data-container {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    flex-direction: row;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    margin-bottom: 0;
-}
-
-.blocklist-item {
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.blocklist-item2 {
-    -webkit-box-pack: start;
-    justify-content: center;
-    -webkit-box-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-}
-
-
-/* Helper styles */
-
-.icon-padding-left {
-    margin-left: 0.5rem;
-    color: #212121;
-}
-
-.icon-padding-right {
-    margin-right: 0.5rem;
-}
-
-/* Featured styles */
-
-.featured {
-    padding: 4rem 0;
-}
-.featured .level {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid lightgrey;
-}
-.featured .level-item h2 {
-    color: var(--primary);
-    font-weight: 600;
-}
-.featured article .subtitle {
-    margin-top: 1rem;
-    color: #212121;
-}
-
-/* Categories styles */
-
-.category {
-    margin-top: 2rem;
-}
-
-.category span {
-    /*opacity: 0.5;*/
-    font-size: 1rem;
-    margin-left: 1rem;
-    font-weight: 400;
-    color: var(--primary);;
-}
-
-.category ul {
-    list-style: none;
-    padding: 0;
-}
-
-.category li {
-    padding-top: 1rem;
-}
-
-.category .category-more {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    color: var(--primary);
-    font-weight: 700;
-    margin-top: 1rem;
+/* Layout */
+.ml-auto {
+    margin-left: auto;
 }
 
 /* Footer styles */
@@ -174,7 +25,6 @@ hr {
 .footer {
     margin-top: 5rem;
     background: white;
-    border-top: 1px solid var(--primary);
 }
 .footer .links {
     display: flex;
@@ -197,7 +47,6 @@ hr {
     -webkit-animation: am-moving-dashes 1s linear infinite;
     animation: am-moving-dashes 1s linear infinite;
 }
-
 @-webkit-keyframes am-moving-dashes {
     100% {
         stroke-dashoffset: -31px;
@@ -244,14 +93,4 @@ hr {
     100% {
         stroke-dashoffset: 0%;
     }
-}
-
-body{
-    background-color: #0f0f00;
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-
-.is-5 {
-    color: aliceblue;
 }
