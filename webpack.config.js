@@ -5,7 +5,10 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     context: __dirname,
-    entry: './src/index.js',
+    entry: './src/index.tsx',
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
+    },
     module: {
         rules: [
             {
@@ -17,12 +20,8 @@ module.exports = {
                 ],
             },
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                options: {
-                    presets: ["@babel/preset-react"]
-                }
+                test: /\.tsx?$/,
+                use: 'ts-loader',
             },
             {
                 test: /\.css$/,

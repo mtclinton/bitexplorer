@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from "react";
 
 import BitcoinIcon from '../assets/bitcoin.svg';
-import LitecoinIcon from '../assets/litecoin.svg';
-import DashIcon from '../assets/dash.svg';
-import DogecoinIcon from '../assets/dogecoin.svg';
+import LitecoinIcon from  '../assets/litecoin.svg';
+import DashIcon from  '../assets/dash.svg';
+import DogecoinIcon from  '../assets/dogecoin.svg';
 
 import Header from '../components/nav/Header';
 import Footer from '../components/nav/Footer';

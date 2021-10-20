@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 import BlockInfo from './parts/BlockInfo';
 import TxGraph from './parts/TxGraph';
 
+import {Info, Block, IGetInfoResponse,IGetBlockResponse} from "../../types";
 import { API_URL } from '../../constants';
 
-function Overview(props) {
+interface IProps {
+    currency: string,
+    Icon: Function
+    code: string
+}
+
+
+
+function Overview(props: IProps) {
     const { currency, Icon, code } = props;
 
-    const [info, setInfo] = useState(null);
-    const [blocks, setBlocks] = useState([]);
+    const [info, setInfo] = useState<Info | null>(null);
+    const [blocks, setBlocks] = useState<Block[]>([]);
 
     useEffect(() => {
-        axios.get(`${API_URL}get_info/${code}`)
+        axios.get<IGetInfoResponse>(`${API_URL}get_info/${code}`)
             .then((res) => {
+                console.log(res.data.data);
+
                 setInfo(res.data.data);
+
             }).catch((e) => {
             console.error(e);
         });
@@ -24,12 +36,14 @@ function Overview(props) {
 
     useEffect(() => {
         async function fetchBlocks() {
-            const blockCount = info.blocks;
+            if(!info) return;
 
+            const blockCount = info.blocks;
             for (let i = blockCount; i >= (blockCount - 7); i -= 1) {
                 try {
                     // eslint-disable-next-line no-await-in-loop
-                    const res = await axios.get(`${API_URL}get_block/${code}/${i}`);
+                    const res = await axios.get<IGetBlockResponse>(`${API_URL}get_block/${code}/${i}`);
+                    console.log(res.data.data);
                     blocks.push(res.data.data);
                 } catch (e) {
                     console.error(e);
@@ -76,11 +90,5 @@ function Overview(props) {
         </div>
     );
 }
-
-Overview.propTypes = {
-    currency: PropTypes.string.isRequired,
-    Icon: PropTypes.func.isRequired,
-    code: PropTypes.string.isRequired,
-};
 
 export default Overview;

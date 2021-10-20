@@ -1,9 +1,15 @@
-import React from 'react';
+import * as React from "react";
 import PropTypes from 'prop-types';
 
 import numberWithCommas from '../../../utils/commas';
+import {Block, Info} from "../../../types";
 
-function BlockInfo(props) {
+interface IProps {
+    info: Info
+    blocks: Block[]
+}
+
+function BlockInfo(props: IProps) {
 
     const { info, blocks } = props;
 
@@ -14,7 +20,7 @@ function BlockInfo(props) {
                     <div className="mt-2">
                         <p>
                             Mining Difficulty:&nbsp;
-                            {numberWithCommas(info.mining_difficulty)}
+                            {numberWithCommas(parseInt(info.mining_difficulty))}
                         </p>
                         <p>
                             Unconfirmed Transactions:&nbsp;
@@ -47,10 +53,5 @@ function BlockInfo(props) {
         </section>
     );
 }
-
-BlockInfo.propTypes = {
-    info: PropTypes.object.isRequired,
-    blocks: PropTypes.array.isRequired,
-};
 
 export default BlockInfo;

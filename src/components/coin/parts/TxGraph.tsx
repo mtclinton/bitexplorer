@@ -1,12 +1,17 @@
-import React from 'react';
+import * as React from "react";
 import PropTypes from 'prop-types';
 import ReactApexChart from 'react-apexcharts';
 
 import numberWithCommas from '../../../utils/commas';
+import {Block} from "../../../types";
 
 const randomColor = require('randomcolor');
 
-function TxGraph(props) {
+interface IProps {
+    blocks: Block[]
+}
+
+function TxGraph(props: IProps) {
     const {blocks} = props;
 
     return (
@@ -23,7 +28,6 @@ function TxGraph(props) {
                     count: 30,
                 }),
                 xaxis: {
-                    type: 'block',
                     tickAmount: 6,
                     title: {
                         text: 'Block Number',
@@ -48,9 +52,5 @@ function TxGraph(props) {
         />
     );
 }
-
-TxGraph.propTypes = {
-    blocks: PropTypes.array.isRequired,
-};
 
 export default TxGraph;

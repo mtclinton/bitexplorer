@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from "react";
 import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/logo.svg';
@@ -9,7 +9,7 @@ function Header() {
             <div className="container">
                 <div className="navbar-brand">
                     <Link className="navbar-item" to="/">
-                        <Logo width={120} />
+                        <Logo width={120}/>
                     </Link>
                 </div>
             </div>
